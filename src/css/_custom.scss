@@ -263,6 +263,9 @@ body {
 	}
 }
 
-#enpit {
-	
+#enpit .portlet-asset-publisher .portlet-content {
+	visibility: hidden;
+	img {
+		visibility: initial;
+	}
 }
