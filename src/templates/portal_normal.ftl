@@ -70,12 +70,6 @@
 			</#if>
 		</div>
 	</section>
-
-	<footer class="container-fluid-1280" id="footer" role="contentinfo">
-		<div class="row">
-			<@liferay.language key="powered-by" /> <a href="http://www.liferay.com" rel="external">Liferay</a>
-		</div>
-	</footer>
 </div>
 
 <@liferay_util["include"] page=body_bottom_include />
