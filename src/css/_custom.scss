@@ -267,5 +267,11 @@ body {
 	visibility: hidden;
 	img {
 		visibility: initial;
+		width: 100%;
+   		height: auto;
 	}
+}
+
+#enpit .portlet-asset-publisher .portlet-content-container{
+	height: initial;
 }
