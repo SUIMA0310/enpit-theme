@@ -1,3 +1,13 @@
+
+<#assign
+	theme_display = themeDisplay
+/>
+
+<#assign
+	css_folder = theme_display.getPathThemeCss()
+	images_folder = theme_display.getPathThemeImages()
+/>
+
 <#assign portlet_display = portletDisplay>
 <#assign portlet_back_url = htmlUtil.escapeHREF(portlet_display.getURLBack())>
 <#assign portlet_content_css_class = "portlet-content">
@@ -27,11 +37,28 @@
 					</menu>
 				</#foreach>
 
+				<#assign del_link = "" >
+				<#foreach portletConfigurationIcon in portlet_configuration_icons>
+					<#assign del_temp_link = portletConfigurationIcon.getURL(renderRequest, renderResponse) >
+					<#if del_temp_link?contains("cmd=delete") >
+						<#assign del_link = del_temp_link >
+					</#if>
+				</#foreach>
+
 				<#if portlet_configuration_icons?has_content>
 					<menu class="portlet-topper-toolbar" id="portlet-topper-toolbar_${portlet_id}" type="toolbar">
+						<#if portlet_id?starts_with("com_liferay_asset_publisher_web_portlet_AssetPublisherPortlet") >
+							<a href="${del_link}">
+								<svg class="lexicon-icon">
+									<use xlink:href="${images_folder}/lexicon/icons.svg#times" />
+								</svg>
+							</a>
+						</#if>
+
 						<@liferay_portlet["icon-options"] portletConfigurationIcons=portlet_configuration_icons />
 					</menu>
 				</#if>
+
 			</header>
 
 			<#assign portlet_content_css_class = portlet_content_css_class + " portlet-content-editable">
